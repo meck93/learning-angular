@@ -5,7 +5,7 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
-        "project": "apps/tour-of-heros-e2e/tsconfig.*?.json"
+        "project": "apps/tour-of-heroes-e2e/tsconfig.*?.json"
       },
       "rules": {}
     },

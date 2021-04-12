@@ -19,12 +19,12 @@
     }
   },
   "projects": {
-    "tour-of-heros": {
+    "tour-of-heroes": {
       "tags": []
     },
-    "tour-of-heros-e2e": {
+    "tour-of-heroes-e2e": {
       "tags": [],
-      "implicitDependencies": ["tour-of-heros"]
+      "implicitDependencies": ["tour-of-heroes"]
     }
   }
 }
