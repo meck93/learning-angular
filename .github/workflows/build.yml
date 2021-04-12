@@ -1,0 +1,41 @@
+name: build & test
+
+on:
+  pull_request:
+    paths:
+    - "apps/**"
+    - "!**.md"
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm f
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: setup node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: install dependencies
+        run: npm ci
+
+      - name: lint
+        run: npm run lint
+
+      - name: build
+        run: npm run build
+
+      - name: unit test
+        run: npm run test
+
+      - name: unit test
+        run: npm run e2e
