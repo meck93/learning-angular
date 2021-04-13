@@ -8,7 +8,7 @@
   cursor: pointer;
   background-color: #eee;
   margin: 0.5rem;
-  height: 1.6rem;
+  height: 1.8rem;
   border-radius: 4px;
   line-height: 1.7rem;
 }
@@ -34,7 +34,7 @@
   font-size: small;
   color: white;
   background-color: #405061;
-  padding: 0rem 0.5rem 0 0.5rem;
+  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
   height: 1.6rem;
   border-radius: 4px 0 0 4px;
 }
