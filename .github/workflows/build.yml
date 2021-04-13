@@ -37,5 +37,13 @@ jobs:
       - name: unit test
         run: npm run test
 
-      - name: unit test
+      - name: e2e test
         run: npm run e2e
+
+      - name: upload cypress capture if a test fails
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: e2e-fail-${{ github.run_id }}
+          path: ${{ github.workspace }}/dist/cypress/apps/tour-of-heroes-e2e/videos
+          retention-days: 5
