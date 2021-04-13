@@ -1,15 +1,8 @@
-import { getGreeting } from '../support/app.po';
-
 describe('tour-of-heroes', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
-
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to Tour of Heroes!');
-
+  it('should display h1 and h2 titles', () => {
+    cy.get('h1').contains('Welcome to Tour of Heroes!');
     cy.get('h2').contains('My Heroes');
   });
 });
