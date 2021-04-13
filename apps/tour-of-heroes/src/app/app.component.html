@@ -7,6 +7,10 @@
 </mat-toolbar> -->
 
   <h1>Welcome to {{ title }}!</h1>
-  <nx-app-heroes></nx-app-heroes>
+  <nav>
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/heroes">Heroes</a>
+  </nav>
+  <router-outlet></router-outlet>
   <nx-app-messages></nx-app-messages>
 </div>
