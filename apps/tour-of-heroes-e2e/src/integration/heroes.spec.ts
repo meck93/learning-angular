@@ -1,15 +1,20 @@
-describe('heroes', () => {
-  beforeEach(() => cy.visit('/'));
-
+describe('Heroes Route Tests', () => {
   it('should check that 10 heroes are rendered', () => {
+    cy.visit('/heroes');
+
     cy.get('ul.heroes').children().should('have.length', 10);
   });
 
-  it('should select first hero and change its name', () => {
+  it('should select first hero and display detail component', () => {
+    cy.visit('/heroes');
+
     cy.get('ul')
       .contains('11 Dr Nice')
       .click()
-      .should('have.class', 'selected');
+      .location()
+      .should((loc) => {
+        expect(loc.pathname).to.eq('/heroes/11');
+      });
 
     cy.get('h2')
       .contains('DR NICE Details')
@@ -20,6 +25,10 @@ describe('heroes', () => {
         expect($children).to.contain('11');
         expect($children).to.contain('Hero Name:');
       });
+  });
+
+  it('should modify the name of a hero', () => {
+    cy.visit('/heroes/11');
 
     cy.get('h2')
       .contains('DR NICE Details')
@@ -31,6 +40,5 @@ describe('heroes', () => {
       .type('Dr Not Nice');
 
     cy.get('h2').contains('DR NOT NICE Details');
-    cy.get('ul').children().contains('11 Dr Not Nice');
   });
 });
