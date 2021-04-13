@@ -9,5 +9,7 @@ describe('tour-of-heroes', () => {
 
     // Function helper example, see `../support/app.po.ts` file
     getGreeting().contains('Welcome to Tour of Heroes!');
+
+    cy.get('h2').contains('WINDSTORM Details');
   });
 });
