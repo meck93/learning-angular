@@ -3,12 +3,12 @@ name: build & test
 on:
   pull_request:
     paths:
-    - "apps/**"
-    - "!**.md"
+      - "apps/**"
+      - "!**.md"
   workflow_dispatch:
 
 jobs:
-  build-test:
+  setup-node-and-install:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,27 +19,68 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
       - name: setup node.js 14
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-
       - name: install dependencies
         run: npm ci
 
+  lint:
+    needs: [setup-node-and-install]
+    runs-on: ubuntu-latest
+    steps:
+      - name: cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm f
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: lint
         run: npm run lint
 
+  build:
+    needs: [setup-node-and-install]
+    runs-on: ubuntu-latest
+    steps:
+      - name: cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm f
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: build
         run: npm run build
 
+  unit-test:
+    needs: [setup-node-and-install]
+    runs-on: ubuntu-latest
+    steps:
+      - name: cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm f
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: unit test
         run: npm run test
 
+  e2e-test:
+    needs: [setup-node-and-install]
+    runs-on: ubuntu-latest
+    steps:
+      - name: cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm f
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: e2e test
         run: npm run e2e
-
       - name: upload cypress capture if a test fails
         if: ${{ failure() }}
         uses: actions/upload-artifact@v2
