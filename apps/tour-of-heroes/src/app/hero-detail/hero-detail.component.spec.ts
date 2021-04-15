@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { HeroDetailComponent } from './hero-detail.component';
@@ -15,6 +16,7 @@ describe('HeroDetailComponent', () => {
           useValue: { snapshot: { paramMap: convertToParamMap({ id: '11' }) } },
         },
       ],
+      imports: [HttpClientTestingModule],
     });
     await TestBed.compileComponents();
 
