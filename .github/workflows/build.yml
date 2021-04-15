@@ -12,10 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: cache node_modules
-        uses: actions/cache@v2
+      - uses: actions/cache@v2
         with:
-          path: ~/.npm f
+          path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
@@ -30,10 +29,10 @@ jobs:
     needs: [setup-node-and-install]
     runs-on: ubuntu-latest
     steps:
-      - name: cache node_modules
-        uses: actions/cache@v2
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
         with:
-          path: ~/.npm f
+          path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
@@ -44,10 +43,10 @@ jobs:
     needs: [setup-node-and-install]
     runs-on: ubuntu-latest
     steps:
-      - name: cache node_modules
-        uses: actions/cache@v2
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
         with:
-          path: ~/.npm f
+          path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
@@ -58,10 +57,10 @@ jobs:
     needs: [setup-node-and-install]
     runs-on: ubuntu-latest
     steps:
-      - name: cache node_modules
-        uses: actions/cache@v2
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
         with:
-          path: ~/.npm f
+          path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
@@ -72,10 +71,10 @@ jobs:
     needs: [setup-node-and-install]
     runs-on: ubuntu-latest
     steps:
-      - name: cache node_modules
-        uses: actions/cache@v2
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
         with:
-          path: ~/.npm f
+          path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
