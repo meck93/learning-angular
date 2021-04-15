@@ -1,9 +1,10 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
-import { HeroService } from '../hero.service';
 import { HEROES } from '../../../testing/mock-heroes';
+import { HeroService } from '../hero.service';
 import { HeroDetailComponent } from './hero-detail.component';
 
 describe('HeroDetailComponent', () => {
@@ -25,7 +26,7 @@ describe('HeroDetailComponent', () => {
         },
         { provide: HeroService, useValue: mockHeroService },
       ],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
     });
     await TestBed.compileComponents();
 
