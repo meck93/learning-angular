@@ -42,3 +42,36 @@
 input {
   padding: 0.5rem;
 }
+
+.list-item {
+  display: flex;
+  flex-direction: row;
+  justify-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-button {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+.add-button:hover {
+  color: white;
+  background-color: #42545c;
+  cursor: pointer;
+}
+
+button.delete {
+  background-color: white;
+  border-radius: 4px;
+  color: #525252;
+  font-size: 1rem;
+}
+
+button.delete:hover {
+  background-color: #525252;
+  color: white;
+  cursor: pointer;
+}
