@@ -3,16 +3,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { of } from 'rxjs';
 import { HeroService } from '../hero.service';
-import { HEROES } from '../mock-heroes';
+import { HEROES } from '../../../testing/mock-heroes';
 import { HeroDetailComponent } from './hero-detail.component';
 
 describe('HeroDetailComponent', () => {
   let component: HeroDetailComponent;
   let fixture: ComponentFixture<HeroDetailComponent>;
   let mockHeroService: Partial<HeroService>;
+  let spy: jest.SpyInstance;
 
   beforeEach(async () => {
     mockHeroService = { getHero: jest.fn(() => of(HEROES[0])) };
+    spy = jest.spyOn(mockHeroService, 'getHero');
 
     TestBed.configureTestingModule({
       declarations: [HeroDetailComponent],
@@ -34,6 +36,11 @@ describe('HeroDetailComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+
+    // check mocked service call
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    // check that the hero is the expected one
     expect(component.hero).toBeDefined();
     expect(component.hero?.id).toBe(11);
     expect(component.hero?.name).toBe('Dr Nice');
