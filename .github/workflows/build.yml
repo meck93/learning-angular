@@ -8,76 +8,45 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup-node-and-install:
+  lint-build-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       - name: setup node.js 14
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: install dependencies
         run: npm ci
-
-  lint:
-    needs: [setup-node-and-install]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       - name: lint
         run: npm run lint
-
-  build:
-    needs: [setup-node-and-install]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       - name: build
         run: npm run build
-
-  unit-test:
-    needs: [setup-node-and-install]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       - name: unit test
         run: npm run test
 
   e2e-test:
-    needs: [setup-node-and-install]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: setup node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
       - uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      - name: install dependencies
+        run: npm ci
       - name: e2e test
         run: npm run e2e
       - name: upload cypress capture if a test fails
