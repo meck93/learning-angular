@@ -4,7 +4,16 @@ import { Hero } from '../heroes/shared/hero.model';
 
 @Component({
   selector: 'nx-app-dashboard',
-  templateUrl: './dashboard.component.html',
+  template: `
+    <h2>Top Heroes</h2>
+    <div class="heroes-menu">
+      <a *ngFor="let hero of heroes" routerLink="/heroes/{{ hero.id }}">
+        {{ hero.name }}
+      </a>
+    </div>
+
+    <nx-app-hero-search></nx-app-hero-search>
+  `,
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {

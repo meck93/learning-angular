@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { HEROES } from '../../../testing/mock-heroes';
-import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { HeroService } from '../hero.service';
+import { HeroDetailComponent } from '../heroes/hero-detail/hero-detail.component';
 import { DashboardComponent } from './dashboard.component';
 
 describe('DashboardComponent', () => {
