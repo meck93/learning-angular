@@ -1,10 +1,9 @@
-describe('Dashboard Route Tests', () => {
-  beforeEach(() => cy.visit('/dashboard'));
-
+describe('Angular Tour of Heroes E2E Testing', () => {
   it('should display h1 and h2 titles', () => {
+    cy.visit('/dashboard');
     cy.get('h1').contains('Welcome to Tour of Heroes!');
     cy.get('h2').contains('Top Heroes');
-    cy.get('h2').contains('Messages');
+    cy.contains('Messages');
   });
 
   // HEROES TESTS
@@ -25,8 +24,7 @@ describe('Dashboard Route Tests', () => {
         expect(loc.pathname).to.eq('/heroes/11');
       });
 
-    cy.get('h2')
-      .contains('DR NICE Details')
+    cy.contains('DR NICE Details')
       .parent()
       .children()
       .should(($children) => {
@@ -55,8 +53,7 @@ describe('Dashboard Route Tests', () => {
   it('[/dashboard]: single message initially', () => {
     cy.visit('/dashboard');
 
-    cy.get('h2')
-      .contains('Messages')
+    cy.contains('Messages')
       .parent()
       .children()
       // 2 tags: h2 + button + 1 message: div
@@ -66,8 +63,7 @@ describe('Dashboard Route Tests', () => {
   it('[/heroes]: single message initially', () => {
     cy.visit('/heroes');
 
-    cy.get('h2')
-      .contains('Messages')
+    cy.contains('Messages')
       .parent()
       .children()
       // 2 tags: h2 + button + 1 message: div
