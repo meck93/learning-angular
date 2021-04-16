@@ -11,9 +11,10 @@ input {
 button {
   margin-top: 1rem;
   background-color: #eee;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 4px;
   font-size: 1rem;
+  cursor: pointer;
 }
 
 button:hover {
@@ -24,4 +25,8 @@ button:disabled {
   background-color: #eee;
   color: #ccc;
   cursor: auto;
+}
+
+.save-button {
+  margin-right: 1rem;
 }
