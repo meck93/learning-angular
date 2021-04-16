@@ -4,7 +4,7 @@ import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { HEROES } from '../../../../testing/mock-heroes';
-import { HeroService } from '../../hero.service';
+import { HeroService } from '../service/hero.service';
 import { HeroDetailComponent } from './hero-detail.component';
 
 describe('HeroDetailComponent', () => {
