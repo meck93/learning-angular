@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { HeroService } from '../hero.service';
-import { Hero } from '../heroes/shared/hero.model';
+import { HeroService } from '../../hero.service';
+import { Hero } from '../../heroes/shared/hero.model';
 
 @Component({
   selector: 'nx-app-hero-search',
