@@ -11,7 +11,7 @@ import { HeroSearchComponent } from './heroes/hero-search/hero-search.component'
 import { HeroesComponent } from './heroes/heroes.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './router/app-routing.module';
-import { InMemoryDataService } from './server/in-memory-data.service';
+import { InMemoryDataService } from './inMemoryServer/in-memory-data.service';
 
 @NgModule({
   declarations: [
