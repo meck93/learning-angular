@@ -73,8 +73,8 @@ describe('Angular Tour of Heroes E2E Testing', () => {
       cy.contains('Messages')
         .parent()
         .children()
-        // 2 tags: h2 + button + 1 message: div
-        .should('have.length', 2 + 1);
+        // 3 tags: h2 + 2x button + 1 message: div
+        .should('have.length', 3 + 1);
 
       // remove all messages
       cy.get('button').contains('Clear Messages').click();
@@ -87,8 +87,8 @@ describe('Angular Tour of Heroes E2E Testing', () => {
       cy.contains('Messages')
         .parent()
         .children()
-        // 2 tags: h2 + button + 1 message: div
-        .should('have.length', 2 + 1);
+        // 3 tags: h2 + 2x button + 1 message: div
+        .should('have.length', 3 + 1);
 
       // remove all messages
       cy.get('button').contains('Clear Messages').click();
@@ -102,8 +102,8 @@ describe('Angular Tour of Heroes E2E Testing', () => {
         .contains('Messages')
         .parent()
         .children()
-        // 2 tags: h2 + button + 1 message: div
-        .should('have.length', 2 + 1);
+        // 3 tags: h2 + 2x button + 1 message: div
+        .should('have.length', 3 + 1);
 
       // remove all messages
       cy.get('button').contains('Clear Messages').click();
