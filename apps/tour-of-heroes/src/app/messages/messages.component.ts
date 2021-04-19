@@ -5,7 +5,10 @@ import { MessageService } from './service/message.service';
   template: `
     <div *ngIf="messageService.messages.length">
       <h2>Messages</h2>
-      <button class="clear" (click)="messageService.clear()">
+      <button
+        class="clear mb-2 mb-md-0 mr-md-2"
+        (click)="messageService.clear()"
+      >
         Clear Messages (Integrated Button)
       </button>
       <nx-app-button

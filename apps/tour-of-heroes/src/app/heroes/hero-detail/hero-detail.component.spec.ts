@@ -22,7 +22,7 @@ describe('HeroDetailComponent', () => {
       providers: [
         {
           provide: ActivatedRoute,
-          useValue: { snapshot: { paramMap: convertToParamMap({ id: '11' }) } },
+          useValue: { params: of({ id: '11' }) },
         },
         { provide: HeroService, useValue: mockHeroService },
       ],
