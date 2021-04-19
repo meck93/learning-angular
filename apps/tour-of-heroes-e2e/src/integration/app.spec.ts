@@ -16,8 +16,10 @@ describe('Angular Tour of Heroes E2E Testing', () => {
     });
 
     it('should select first hero and display detail component', () => {
-      cy.visit('/heroes');
+      // perform login
+      cy.visit('/heroes').get('button').contains('Login').click();
 
+      // navigate to correct route
       cy.get('ul')
         .contains('11 Dr Nice')
         .click()
@@ -37,10 +39,19 @@ describe('Angular Tour of Heroes E2E Testing', () => {
     });
 
     it('should modify the name of a hero', () => {
-      cy.visit('/heroes/11');
+      // perform login
+      cy.visit('/heroes').get('button').contains('Login').click();
 
-      cy.get('h2')
-        .contains('DR NICE Details')
+      // navigate to correct route
+      cy.get('ul')
+        .contains('11 Dr Nice')
+        .click()
+        .location()
+        .should((loc) => {
+          expect(loc.pathname).to.eq('/heroes/11');
+        });
+
+      cy.contains('DR NICE Details')
         .parent()
         .children()
         .get('input')
@@ -96,8 +107,19 @@ describe('Angular Tour of Heroes E2E Testing', () => {
     });
 
     it('[/heroes/11]: single message initially', () => {
-      cy.visit('/heroes/11');
+      // perform login
+      cy.visit('/heroes').get('button').contains('Login').click();
 
+      // navigate to correct route
+      cy.get('ul')
+        .contains('11 Dr Nice')
+        .click()
+        .location()
+        .should((loc) => {
+          expect(loc.pathname).to.eq('/heroes/11');
+        });
+
+      // perform actual test -> check that messages exist
       cy.get('h2')
         .contains('Messages')
         .parent()

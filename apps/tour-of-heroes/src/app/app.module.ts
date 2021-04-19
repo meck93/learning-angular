@@ -13,6 +13,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './router/app-routing.module';
 import { InMemoryDataService } from './inMemoryServer/in-memory-data.service';
 import { UiModule } from '@nx-app/ui';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { UiModule } from '@nx-app/ui';
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
