@@ -148,4 +148,34 @@ describe('Angular Tour of Heroes E2E Testing', () => {
         .should('have.length', 2 + 3);
     });
   });
+
+  // SEARCH BAR TESTING
+  describe('Search Testing', () => {
+    it('[search]: find hero by name', () => {
+      // perform login
+      cy.visit('/dashboard').get('button').contains('Login').click();
+
+      // search for hero: "Dr Nice"
+      cy.get('label')
+        .contains('Hero Search')
+        .parent()
+        .children()
+        .get('input')
+        .type('Dr Nice');
+
+      // find one result for hero: "Dr Nice"
+      // navigate to hero
+      cy.get('label')
+        .contains('Hero Search')
+        .parent()
+        .children()
+        .get('ul')
+        .contains('a')
+        .contains('Dr Nice')
+        .click();
+
+      // check that we're now on the /heroes/11 detail page
+      cy.contains('DR NICE Details');
+    });
+  });
 });
