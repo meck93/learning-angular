@@ -170,8 +170,8 @@ describe('Angular Tour of Heroes E2E Testing', () => {
         .parent()
         .children()
         .get('ul')
-        .contains('a')
-        .contains('Dr Nice')
+        .children()
+        .contains('a', 'Dr Nice')
         .click();
 
       // check that we're now on the /heroes/11 detail page
