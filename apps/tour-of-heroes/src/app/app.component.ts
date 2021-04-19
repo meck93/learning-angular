@@ -1,7 +1,6 @@
 import { Component, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { PopupComponent } from 'libs/popup/src/lib/popup/popup.component';
-import { PopupService } from 'libs/popup/src/lib/popup/popup.service';
+import { PopupComponent, PopupService } from '@nx-app/popup';
 
 @Component({
   selector: 'nx-app-root',

@@ -9,11 +9,11 @@ import { PopupService } from './popup/popup.service';
 // also, see app.module.ts
 @NgModule({
   imports: [BrowserModule, BrowserAnimationsModule, CommonModule],
-  providers: [
-    PopupService,
-    { provide: PopupComponent, useValue: PopupComponent },
-  ],
+  providers: [PopupService],
   exports: [PopupComponent],
   declarations: [PopupComponent],
 })
 export class PopupModule {}
+
+// google if this is allowed inside module.ts
+export { PopupComponent, PopupService };
