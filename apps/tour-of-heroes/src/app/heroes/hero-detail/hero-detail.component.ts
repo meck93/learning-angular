@@ -1,7 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { Params } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Hero } from '../../heroes/shared/hero.model';
 import { HeroService } from '../service/hero.service';
 
@@ -24,11 +23,18 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    this.route.params.subscribe((params: Params) =>
+    this.route.params.subscribe((params: Params) => {
       this.heroService
         .getHero(params['id'])
-        .subscribe((hero) => (this.hero = hero))
-    );
+        .subscribe((hero) => (this.hero = hero));
+    });
+    this.route.queryParams.subscribe((params: Params) => {
+      console.log('hero-detail.component.ts 34 queryParams:', params);
+    });
+
+    this.route.fragment.subscribe((fragement: string) => {
+      console.log('hero-detail.component.ts 36 fragement:', fragement);
+    });
   }
 
   goBack(): void {
