@@ -22,7 +22,11 @@ describe('HeroDetailComponent', () => {
       providers: [
         {
           provide: ActivatedRoute,
-          useValue: { params: of({ id: '11' }) },
+          useValue: {
+            params: of({ id: '11' }),
+            queryParams: of({ name: 'Dr Nice' }),
+            fragment: of('mock-fragment'),
+          },
         },
         { provide: HeroService, useValue: mockHeroService },
       ],

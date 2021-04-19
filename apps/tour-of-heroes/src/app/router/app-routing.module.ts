@@ -3,12 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HeroDetailComponent } from '../heroes/hero-detail/hero-detail.component';
 import { HeroesComponent } from '../heroes/heroes.component';
+import { RouteGuard } from './route-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'heroes', component: HeroesComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'heroes/:id', component: HeroDetailComponent },
+  {
+    path: 'heroes',
+    component: HeroesComponent,
+  },
+  {
+    path: 'heroes/:id',
+    canActivate: [RouteGuard],
+    component: HeroDetailComponent,
+  },
 ];
 
 @NgModule({

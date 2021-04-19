@@ -6,10 +6,13 @@ import { Component } from '@angular/core';
     <div class="layout">
       <div class="flex pb-2">
         <h1>Welcome to {{ title }}!</h1>
-        <nav>
-          <a routerLink="/dashboard">Dashboard</a>
-          <a routerLink="/heroes">Heroes</a>
-        </nav>
+        <div class="nav-bar">
+          <nav>
+            <a routerLink="/dashboard">Dashboard</a>
+            <a routerLink="/heroes">Heroes</a>
+          </nav>
+          <nx-app-login></nx-app-login>
+        </div>
       </div>
       <router-outlet></router-outlet>
       <nx-app-messages></nx-app-messages>
