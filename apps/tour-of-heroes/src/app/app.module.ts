@@ -12,8 +12,12 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './router/app-routing.module';
 import { InMemoryDataService } from './inMemoryServer/in-memory-data.service';
+import { StoreModule } from '@ngrx/store';
 import { UiModule } from '@nx-app/ui';
 import { LoginComponent } from './login/login.component';
+import { reducer } from './heroes/store/heroes.reducer';
+import { HeroEffects } from './heroes/store/heroes.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,8 @@ import { LoginComponent } from './login/login.component';
     LoginComponent,
   ],
   imports: [
+    StoreModule.forRoot({ heroes: reducer }),
+    EffectsModule.forRoot([HeroEffects]),
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
