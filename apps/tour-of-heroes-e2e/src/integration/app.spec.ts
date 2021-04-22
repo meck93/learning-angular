@@ -106,32 +106,6 @@ describe('Angular Tour of Heroes E2E Testing', () => {
       cy.contains('Messages').should('not.exist');
     });
 
-    it('[/heroes/11]: single message initially', () => {
-      // perform login
-      cy.visit('/heroes').get('button').contains('Login').click();
-
-      // navigate to correct route
-      cy.get('ul')
-        .contains('11 Dr Nice')
-        .click()
-        .location()
-        .should((loc) => {
-          expect(loc.pathname).to.eq('/heroes/11');
-        });
-
-      // perform actual test -> check that messages exist
-      cy.get('h2')
-        .contains('Messages')
-        .parent()
-        .children()
-        // 3 tags: h2 + 2x button + 1 message: div
-        .should('have.length', 3 + 1);
-
-      // remove all messages
-      cy.get('button').contains('Clear Messages').click();
-      cy.contains('Messages').should('not.exist');
-    });
-
     it('[navigation]: check number of messages correct after navigating', () => {
       // navigate from /dashboard to /heroes
       cy.visit('/dashboard').get('a').contains('Heroes').click();
@@ -176,6 +150,39 @@ describe('Angular Tour of Heroes E2E Testing', () => {
 
       // check that we're now on the /heroes/11 detail page
       cy.contains('DR NICE Details');
+    });
+  });
+
+  // FORMS Testing
+  describe('Contact Form Testing', () => {
+    it('[/contact]: submit form', () => {
+      // go to contact form
+      cy.visit('/contact');
+
+      // enter username = Moritz
+      cy.get('label')
+        .contains('Username')
+        .parent()
+        .children()
+        .get('input')
+        .type('Tester');
+
+      // enter email = Moritz
+      cy.get('label')
+        .contains('Email')
+        .parent()
+        .children()
+        .get('input')
+        .type('test@test.ch');
+
+      // enter textarea = Jimmy
+      cy.get('textarea').type('Jimmy');
+
+      // submit the form
+      cy.get('button').click();
+
+      // success should appear
+      cy.get('p').contains('Success!');
     });
   });
 });
