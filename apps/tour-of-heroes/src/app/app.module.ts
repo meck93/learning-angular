@@ -14,6 +14,7 @@ import { AppRoutingModule } from './router/app-routing.module';
 import { InMemoryDataService } from './inMemoryServer/in-memory-data.service';
 import { UiModule } from '@nx-app/ui';
 import { LoginComponent } from './login/login.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LoginComponent } from './login/login.component';
     DashboardComponent,
     HeroSearchComponent,
     LoginComponent,
+    ContactFormComponent,
   ],
   imports: [
     BrowserModule,

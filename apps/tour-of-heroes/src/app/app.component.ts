@@ -10,12 +10,12 @@ import { Component } from '@angular/core';
           <nav>
             <a routerLink="/dashboard">Dashboard</a>
             <a routerLink="/heroes">Heroes</a>
+            <a routerLink="/contact">Contact Form</a>
           </nav>
           <nx-app-login></nx-app-login>
         </div>
       </div>
       <router-outlet></router-outlet>
-      <nx-app-messages></nx-app-messages>
     </div>
   `,
   styleUrls: ['./app.component.css'],
