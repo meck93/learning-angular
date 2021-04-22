@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -15,6 +15,7 @@ import { InMemoryDataService } from './inMemoryServer/in-memory-data.service';
 import { UiModule } from '@nx-app/ui';
 import { LoginComponent } from './login/login.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { NewsletterFormComponent } from './newsletter-form/newsletter-form.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +27,13 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     HeroSearchComponent,
     LoginComponent,
     ContactFormComponent,
+    NewsletterFormComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     UiModule,
     HttpClientModule,

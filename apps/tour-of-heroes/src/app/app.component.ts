@@ -10,7 +10,8 @@ import { Component } from '@angular/core';
           <nav>
             <a routerLink="/dashboard">Dashboard</a>
             <a routerLink="/heroes">Heroes</a>
-            <a routerLink="/contact">Contact Form</a>
+            <a routerLink="/contact">Contact Us!</a>
+            <a routerLink="/newsletter">Newsletter</a>
           </nav>
           <nx-app-login></nx-app-login>
         </div>
