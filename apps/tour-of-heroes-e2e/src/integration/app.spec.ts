@@ -181,17 +181,47 @@ describe('Angular Tour of Heroes E2E Testing', () => {
       // go to contact form
       cy.visit('/newsletter');
 
-      // enter firstname
-      cy.get('input[formControlName="firstname"]').type('Mr.');
+      // firstname
+      // touch firstname field -> should show field required message
+      cy.get('input[formControlName="firstname"]').clear().blur();
+      cy.get('span').contains('This field is required!');
 
-      // enter lastname
-      cy.get('input[formControlName="lastname"]').type('Tester');
+      // enter forbidden value -> should show value not allowed message
+      cy.get('input[formControlName="firstname"]').type('Moritz').blur();
+      cy.get('span').contains('This name is not allowed!');
 
-      // enter email
-      cy.get('input[formControlName="email"]').type('test@test.ch');
+      // enter valid input
+      cy.get('input[formControlName="firstname"]').clear().type('Mr.').blur();
+
+      // lastname
+      // touch lastname field -> should show field required message
+      cy.get('input[formControlName="lastname"]').clear().blur();
+      cy.get('span').contains('This field is required!');
+
+      // enter forbidden value -> should show value not allowed message
+      cy.get('input[formControlName="lastname"]').type('Moritz').blur();
+      cy.get('span').contains('This name is not allowed!');
+
+      // enter valid input
+      cy.get('input[formControlName="lastname"]').clear().type('Tester').blur();
+
+      // email
+      // touch email field -> should show field required message
+      cy.get('input[formControlName="email"]').clear().blur();
+      cy.get('span').contains('This field is required!');
+
+      // enter forbidden value -> should show value not allowed message
+      cy.get('input[formControlName="email"]').type('moritz@eck.ch').blur();
+      cy.get('span').contains('This email is not allowed!');
+
+      // enter valid input
+      cy.get('input[formControlName="email"]')
+        .clear()
+        .type('test@test.ch')
+        .blur();
 
       // submit the form
-      cy.get('button[type="submit"]').click();
+      cy.get('button[type="submit"]').should('be.enabled').click();
 
       // success should appear
       cy.get('p').contains('Success!');
