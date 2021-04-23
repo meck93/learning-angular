@@ -17,6 +17,20 @@ const routes: Routes = [
     canActivate: [RouteGuard],
     component: HeroDetailComponent,
   },
+  {
+    path: 'newsletter',
+    loadChildren: () =>
+      import('../newsletter-form/newsletter-form.module').then(
+        (m) => m.NewsletterFormModule
+      ),
+  },
+  {
+    path: 'contact',
+    loadChildren: () =>
+      import('../contact-form/contact-form.module').then(
+        (m) => m.ContactFormModule
+      ),
+  },
 ];
 
 @NgModule({

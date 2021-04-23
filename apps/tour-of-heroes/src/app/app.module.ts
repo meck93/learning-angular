@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiModule } from '@nx-app/ui';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppComponent } from './app.component';
-import { ContactFormModule } from './contact-form/contact-form.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './heroes/hero-detail/hero-detail.component';
 import { HeroSearchComponent } from './heroes/hero-search/hero-search.component';
@@ -14,7 +13,6 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { InMemoryDataService } from './inMemoryServer/in-memory-data.service';
 import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './messages/messages.component';
-import { NewsletterFormModule } from './newsletter-form/newsletter-form.module';
 import { AppRoutingModule } from './router/app-routing.module';
 
 @NgModule({
@@ -35,8 +33,6 @@ import { AppRoutingModule } from './router/app-routing.module';
     AppRoutingModule,
     UiModule,
     HttpClientModule,
-    NewsletterFormModule,
-    ContactFormModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
