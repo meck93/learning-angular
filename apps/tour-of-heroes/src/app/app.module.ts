@@ -1,19 +1,19 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UiModule } from '@nx-app/ui';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './heroes/hero-detail/hero-detail.component';
 import { HeroSearchComponent } from './heroes/hero-search/hero-search.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { InMemoryDataService } from './inMemoryServer/in-memory-data.service';
+import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './router/app-routing.module';
-import { InMemoryDataService } from './inMemoryServer/in-memory-data.service';
-import { UiModule } from '@nx-app/ui';
-import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     UiModule,
     HttpClientModule,

@@ -13,6 +13,7 @@ import { Hero } from '../heroes/shared/hero.model';
     </div>
 
     <nx-app-hero-search></nx-app-hero-search>
+    <nx-app-messages></nx-app-messages>
   `,
   styleUrls: ['./dashboard.component.css'],
 })

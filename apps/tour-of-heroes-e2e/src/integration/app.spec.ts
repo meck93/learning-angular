@@ -106,32 +106,6 @@ describe('Angular Tour of Heroes E2E Testing', () => {
       cy.contains('Messages').should('not.exist');
     });
 
-    it('[/heroes/11]: single message initially', () => {
-      // perform login
-      cy.visit('/heroes').get('button').contains('Login').click();
-
-      // navigate to correct route
-      cy.get('ul')
-        .contains('11 Dr Nice')
-        .click()
-        .location()
-        .should((loc) => {
-          expect(loc.pathname).to.eq('/heroes/11');
-        });
-
-      // perform actual test -> check that messages exist
-      cy.get('h2')
-        .contains('Messages')
-        .parent()
-        .children()
-        // 3 tags: h2 + 2x button + 1 message: div
-        .should('have.length', 3 + 1);
-
-      // remove all messages
-      cy.get('button').contains('Clear Messages').click();
-      cy.contains('Messages').should('not.exist');
-    });
-
     it('[navigation]: check number of messages correct after navigating', () => {
       // navigate from /dashboard to /heroes
       cy.visit('/dashboard').get('a').contains('Heroes').click();
@@ -176,6 +150,81 @@ describe('Angular Tour of Heroes E2E Testing', () => {
 
       // check that we're now on the /heroes/11 detail page
       cy.contains('DR NICE Details');
+    });
+  });
+
+  // FORMS Testing
+  describe('Contact Form Testing', () => {
+    it('[/contact]: submit form', () => {
+      // go to contact form
+      cy.visit('/contact');
+
+      // enter username
+      cy.get('input[name="username"]').type('Tester');
+
+      // enter email
+      cy.get('input[name="email"]').type('test@test.ch');
+
+      // enter answer to question
+      cy.get('textarea[name="answer"]').type('Jimmy');
+
+      // submit the form
+      cy.get('button[type="submit"]').click();
+
+      // success should appear
+      cy.get('p').contains('Success!');
+    });
+  });
+
+  describe('Newsletter Form Testing', () => {
+    it('[/newsletter]: submit form', () => {
+      // go to contact form
+      cy.visit('/newsletter');
+
+      // firstname
+      // touch firstname field -> should show field required message
+      cy.get('input[formControlName="firstname"]').clear().blur();
+      cy.get('span').contains('This field is required!');
+
+      // enter forbidden value -> should show value not allowed message
+      cy.get('input[formControlName="firstname"]').type('Moritz').blur();
+      cy.get('span').contains('This name is not allowed!');
+
+      // enter valid input
+      cy.get('input[formControlName="firstname"]').clear().type('Mr.').blur();
+
+      // lastname
+      // touch lastname field -> should show field required message
+      cy.get('input[formControlName="lastname"]').clear().blur();
+      cy.get('span').contains('This field is required!');
+
+      // enter forbidden value -> should show value not allowed message
+      cy.get('input[formControlName="lastname"]').type('Moritz').blur();
+      cy.get('span').contains('This name is not allowed!');
+
+      // enter valid input
+      cy.get('input[formControlName="lastname"]').clear().type('Tester').blur();
+
+      // email
+      // touch email field -> should show field required message
+      cy.get('input[formControlName="email"]').clear().blur();
+      cy.get('span').contains('This field is required!');
+
+      // enter forbidden value -> should show value not allowed message
+      cy.get('input[formControlName="email"]').type('moritz@eck.ch').blur();
+      cy.get('span').contains('This email is not allowed!');
+
+      // enter valid input
+      cy.get('input[formControlName="email"]')
+        .clear()
+        .type('test@test.ch')
+        .blur();
+
+      // submit the form
+      cy.get('button[type="submit"]').should('be.enabled').click();
+
+      // success should appear
+      cy.get('p').contains('Success!');
     });
   });
 });

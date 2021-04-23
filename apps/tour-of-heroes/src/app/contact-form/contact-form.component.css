@@ -1,0 +1,11 @@
+.container {
+  margin-top: 2rem;
+}
+
+.form-group {
+  margin-top: 1rem;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
