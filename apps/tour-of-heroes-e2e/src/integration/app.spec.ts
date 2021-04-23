@@ -159,27 +159,39 @@ describe('Angular Tour of Heroes E2E Testing', () => {
       // go to contact form
       cy.visit('/contact');
 
-      // enter username = Moritz
-      cy.get('label')
-        .contains('Username')
-        .parent()
-        .children()
-        .get('input')
-        .type('Tester');
+      // enter username
+      cy.get('input[name="username"]').type('Tester');
 
-      // enter email = Moritz
-      cy.get('label')
-        .contains('Email')
-        .parent()
-        .children()
-        .get('input')
-        .type('test@test.ch');
+      // enter email
+      cy.get('input[name="email"]').type('test@test.ch');
 
-      // enter textarea = Jimmy
-      cy.get('textarea').type('Jimmy');
+      // enter answer to question
+      cy.get('textarea[name="answer"]').type('Jimmy');
 
       // submit the form
-      cy.get('button').click();
+      cy.get('button[type="submit"]').click();
+
+      // success should appear
+      cy.get('p').contains('Success!');
+    });
+  });
+
+  describe('Newsletter Form Testing', () => {
+    it('[/newsletter]: submit form', () => {
+      // go to contact form
+      cy.visit('/newsletter');
+
+      // enter firstname
+      cy.get('input[formControlName="firstname"]').type('Mr.');
+
+      // enter lastname
+      cy.get('input[formControlName="lastname"]').type('Tester');
+
+      // enter email
+      cy.get('input[formControlName="email"]').type('test@test.ch');
+
+      // submit the form
+      cy.get('button[type="submit"]').click();
 
       // success should appear
       cy.get('p').contains('Success!');
