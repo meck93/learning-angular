@@ -14,6 +14,7 @@ import { AppRoutingModule } from './router/app-routing.module';
 import { InMemoryDataService } from './inMemoryServer/in-memory-data.service';
 import { UiModule } from '@nx-app/ui';
 import { LoginComponent } from './login/login.component';
+import { PopupModule } from '@nx-app/popup';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     AppRoutingModule,
     UiModule,
+    PopupModule,
     HttpClientModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

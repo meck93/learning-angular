@@ -16,7 +16,8 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-app/ui": ["libs/ui/src/index.ts"]
+      "@nx-app/ui": ["libs/ui/src/index.ts"],
+      "@nx-app/popup": ["libs/popup/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"],
